@@ -70,7 +70,7 @@ export const properties: Record<string, PropertyConfig> = {
     },
     hero: {
       headline: "Find Your Home in the Hills",
-      subheadline: "Affordable country living in San Diego County. Rolling hills, mountain views, tight-knit community — just 30 minutes from the beach.",
+      subheadline: "Affordable living in a beautiful San Diego County setting. Rolling hills, mountain views, tight-knit community — wine country and casinos just minutes away.",
       image: "/images/rancho-hero.jpg",
       stats: [
         { label: "To the beach", value: "30 min" },
