@@ -4,8 +4,8 @@ import { useState } from "react";
 
 const images = [
   { src: '/images/rancho-corrido/park-overlook.jpg', alt: 'Valley overlook of Rancho Corrido' },
-  { src: '/images/pool.jpg', alt: 'Swimming pool' },
-  { src: '/images/playground.jpg', alt: 'Playground area' },
+  { src: '/images/rancho-corrido/pool-palms.jpg', alt: 'Pool with palm trees and cabins' },
+  { src: '/images/rancho-corrido/playground-mountain.jpg', alt: 'Playground with mountain views' },
   { src: '/images/rancho-corrido/common-area.jpg', alt: 'Mature trees and picnic area' },
   { src: '/images/rancho-corrido/entry-road-1.jpg', alt: 'Tree-lined entry road' },
   { src: '/images/rancho-corrido/mountain-vista.jpg', alt: 'Mountain views' },
