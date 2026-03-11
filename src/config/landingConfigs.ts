@@ -124,14 +124,14 @@ export const landingPages: LandingPageConfig[] = [
     benefits: [
       { title: "Peaceful Setting", description: "Rolling hills, mountain views, quiet nights. The retirement you deserve." },
       { title: "Active Community", description: "Friendly neighbors, community events, people your age." },
-      { title: "Wine Country Access", description: "Temecula wineries just 20 minutes away. Perfect for day trips." },
+      { title: "Near Wine Country", description: "Temecula wineries just 20 minutes away. Perfect for day trips." },
       { title: "Affordable Fixed Income", description: "Predictable costs that work with retirement budgets." },
     ],
     ctaPrimary: { text: "Learn More", link: "/apply?source=retiree" },
     ctaSecondary: { text: "Visit Us", link: "/contact?source=retiree" },
     seo: {
       title: "Retirement Living San Diego County | 55+ Community | Rancho Corrido",
-      description: "Affordable retirement living in San Diego County wine country. Peaceful community, friendly neighbors. RV and mobile home spaces in Pauma Valley.",
+      description: "Affordable retirement living near San Diego wine country. Peaceful community, friendly neighbors. RV and mobile home spaces in Pauma Valley.",
       keywords: ["retirement community San Diego", "55+ RV park California", "snowbird housing", "affordable retirement living", "wine country retirement"],
     },
   },

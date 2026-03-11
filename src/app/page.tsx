@@ -1,13 +1,10 @@
 import { properties } from "@/config/properties";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
-import Community from "@/components/Community";
+import Gallery from "@/components/Gallery";
 import StayOptions from "@/components/StayOptions";
-import Location from "@/components/Location";
 import Contact from "@/components/Contact";
-import ChatWidget from "@/components/ChatWidget";
 
-// For now, hardcode to Rancho Corrido - will make dynamic with middleware later
 const property = properties.ranchocorrido;
 
 export default function Home() {
@@ -15,17 +12,15 @@ export default function Home() {
     <main className="min-h-screen">
       <Hero property={property} />
       <Features property={property} />
-      <Community property={property} />
-      <StayOptions property={property} />
-      <Location property={property} />
+      <Gallery />
+      <StayOptions />
       <Contact property={property} />
-      <ChatWidget property={property} />
     </main>
   );
 }
 
 export const metadata = {
-  title: properties.ranchocorrido.seo.title,
-  description: properties.ranchocorrido.seo.description,
-  keywords: properties.ranchocorrido.seo.keywords.join(", "),
+  title: "Rancho Corrido | Affordable RV & Mobile Home Living | Pauma Valley, CA",
+  description: "Affordable RV and mobile home community in Pauma Valley, San Diego County. Full hookups, pool, mountain views. Near Temecula wine country and casinos.",
+  keywords: "RV park Pauma Valley, mobile home San Diego County, affordable housing California, long term RV California",
 };
