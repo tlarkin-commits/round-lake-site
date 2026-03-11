@@ -6,10 +6,10 @@ import Link from "next/link";
 export default function Hero({ property }: { property: PropertyConfig }) {
   return (
     <section className="relative min-h-screen flex items-center">
-      {/* Full-bleed background photo */}
+      {/* Full-bleed background photo - Overlook shot */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${property.hero.image})` }}
+        style={{ backgroundImage: `url(/images/hero.jpg)` }}
       />
       <div className="absolute inset-0 bg-black/50" />
 
