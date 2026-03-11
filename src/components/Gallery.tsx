@@ -6,8 +6,8 @@ const images = [
   { src: '/images/rancho-corrido/park-overlook.jpg', alt: 'Valley overlook of Rancho Corrido' },
   { src: '/images/rancho-corrido/pool-palms.jpg', alt: 'Pool with palm trees and cabins' },
   { src: '/images/rancho-corrido/playground-mountain.jpg', alt: 'Playground with mountain views' },
+  { src: '/images/rancho-corrido/valley-cabin.jpg', alt: 'Cabin nestled in the valley' },
   { src: '/images/rancho-corrido/common-area.jpg', alt: 'Mature trees and picnic area' },
-  { src: '/images/rancho-corrido/entry-road-1.jpg', alt: 'Tree-lined entry road' },
   { src: '/images/rancho-corrido/mountain-vista.jpg', alt: 'Mountain views' },
 ];
 
