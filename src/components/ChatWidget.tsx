@@ -1,27 +1,93 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PropertyConfig } from "@/config/properties";
+
+// OPS API endpoint for AI leasing bot
+const OPS_API_URL = "https://ops.coastmhp.com";
+
+// Generate unique session ID for visitor tracking
+function getSessionId(): string {
+  if (typeof window === "undefined") return "";
+  let sessionId = sessionStorage.getItem("chat_session_id");
+  if (!sessionId) {
+    sessionId = "sess_" + Date.now() + "_" + Math.random().toString(36).substr(2, 9);
+    sessionStorage.setItem("chat_session_id", sessionId);
+  }
+  return sessionId;
+}
 
 export default function ChatWidget({ property }: { property: PropertyConfig }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<{role: string; content: string}[]>([
-    { role: "assistant", content: `Hi! 👋 I am the ${property.name} assistant. How can I help you today?` }
-  ]);
+  const [messages, setMessages] = useState<{role: string; content: string}[]>([]);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [sessionId, setSessionId] = useState("");
 
-  const handleSend = () => {
-    if (!input.trim()) return;
+  // Initialize session and load history
+  useEffect(() => {
+    const sid = getSessionId();
+    setSessionId(sid);
     
-    setMessages(prev => [...prev, { role: "user", content: input }]);
+    // Set initial greeting
+    setMessages([
+      { role: "assistant", content: `Hi! 👋 I'm the ${property.name} leasing assistant. How can I help you today?` }
+    ]);
+    
+    // Load chat history if exists
+    if (sid) {
+      fetch(`${OPS_API_URL}/api/chat/external/${sid}`)
+        .then(r => r.json())
+        .then(data => {
+          if (data.messages?.length > 0) {
+            setMessages(data.messages.map((m: any) => ({ role: m.role, content: m.content })));
+          }
+        })
+        .catch(() => {});
+    }
+  }, [property.name]);
+
+  const handleSend = async () => {
+    if (!input.trim() || loading) return;
+    
+    const userMessage = input.trim();
+    setMessages(prev => [...prev, { role: "user", content: userMessage }]);
     setInput("");
+    setLoading(true);
     
-    // Simulate AI response - will connect to OPS AI Leasing agent
-    setTimeout(() => {
+    try {
+      const response = await fetch(`${OPS_API_URL}/api/chat/external`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sessionId,
+          propertyId: property.opsPropertyId || property.id,
+          message: userMessage,
+          visitorInfo: {
+            referrer: typeof document !== "undefined" ? document.referrer : "",
+            userAgent: typeof navigator !== "undefined" ? navigator.userAgent : ""
+          }
+        })
+      });
+      
+      const data = await response.json();
+      
+      if (data.success && data.response) {
+        setMessages(prev => [...prev, { role: "assistant", content: data.response }]);
+      } else {
+        setMessages(prev => [...prev, { 
+          role: "assistant", 
+          content: "I'm having trouble connecting right now. Please call us at " + property.phone + " for immediate assistance."
+        }]);
+      }
+    } catch (error) {
+      console.error("Chat error:", error);
       setMessages(prev => [...prev, { 
         role: "assistant", 
-        content: "Thanks for your message! Our team will get back to you shortly. For immediate assistance, call us at " + property.phone 
+        content: "I'm having trouble connecting right now. Please call us at " + property.phone + " for immediate assistance."
       }]);
-    }, 1000);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -61,6 +127,13 @@ export default function ChatWidget({ property }: { property: PropertyConfig }) {
                 </div>
               </div>
             ))}
+            {loading && (
+              <div className="flex justify-start">
+                <div className="bg-white border border-gray-200 px-4 py-2 rounded-lg text-gray-500">
+                  Typing...
+                </div>
+              </div>
+            )}
           </div>
           
           {/* Input */}
@@ -71,11 +144,13 @@ export default function ChatWidget({ property }: { property: PropertyConfig }) {
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === "Enter" && handleSend()}
               placeholder="Type a message..."
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+              disabled={loading}
+              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 disabled:opacity-50"
             />
             <button
               onClick={handleSend}
-              className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800"
+              disabled={loading}
+              className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 disabled:opacity-50"
             >
               Send
             </button>
