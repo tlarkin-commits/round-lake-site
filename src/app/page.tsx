@@ -35,7 +35,7 @@ export default function Home() {
           onLearnClick={() => openSarah('learn')}
         />
         
-        <section id="features">
+        <section id="amenities">
           <Features property={property} />
         </section>
         
