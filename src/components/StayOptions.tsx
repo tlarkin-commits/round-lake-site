@@ -1,6 +1,10 @@
 "use client";
 
-import Link from "next/link";
+interface StayOptionsProps {
+  onApplyClick?: () => void;
+  onHomesClick?: () => void; 
+  onTemporaryClick?: () => void;
+}
 
 const options = [
   {
@@ -8,7 +12,7 @@ const options = [
     description: "Make Rancho Corrido your home. Monthly rates for families, workers, and retirees.",
     features: ["Full hookups", "Month-to-month available", "Community atmosphere"],
     cta: "Apply Now",
-    link: "/apply",
+    action: "apply",
     featured: true,
   },
   {
@@ -16,7 +20,7 @@ const options = [
     description: "Park model homes available for rent. Move-in ready with kitchen and utilities.",
     features: ["1 bed / 1 bath", "Fully equipped", "Utilities included"],
     cta: "View Availability",
-    link: "/homes",
+    action: "homes",
     featured: false,
   },
   {
@@ -24,12 +28,26 @@ const options = [
     description: "Up to 90 days. Perfect for travel nurses, contractors, and seasonal workers.",
     features: ["Nightly & weekly rates", "Full hookups", "All amenities"],
     cta: "Check Availability",
-    link: "/temporary",
+    action: "temporary",
     featured: false,
   },
 ];
 
-export default function StayOptions() {
+export default function StayOptions({ onApplyClick, onHomesClick, onTemporaryClick }: StayOptionsProps) {
+  const handleClick = (action: string) => {
+    switch (action) {
+      case 'apply':
+        onApplyClick?.();
+        break;
+      case 'homes':
+        onHomesClick?.();
+        break;
+      case 'temporary':
+        onTemporaryClick?.();
+        break;
+    }
+  };
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6">
@@ -47,8 +65,8 @@ export default function StayOptions() {
             <div 
               key={idx}
               className={`rounded-xl p-8 ${
-                option.featured 
-                  ? 'bg-stone-900 text-white' 
+                option.featured
+                  ? 'bg-stone-900 text-white'
                   : 'bg-stone-50 text-stone-900'
               }`}
             >
@@ -57,7 +75,11 @@ export default function StayOptions() {
                   Most Popular
                 </span>
               )}
-              <h3 className="text-xl font-bold mt-2 mb-3">{option.title}</h3>
+              
+              <h3 className="text-xl font-bold mt-2 mb-3">
+                {option.title}
+              </h3>
+              
               <p className={`mb-6 ${option.featured ? 'text-stone-300' : 'text-stone-600'}`}>
                 {option.description}
               </p>
@@ -73,16 +95,16 @@ export default function StayOptions() {
                 ))}
               </ul>
 
-              <Link
-                href={option.link}
-                className={`block text-center py-3 rounded-lg font-semibold transition-colors ${
+              <button
+                onClick={() => handleClick(option.action)}
+                className={`block w-full text-center py-3 rounded-lg font-semibold transition-colors ${
                   option.featured
                     ? 'bg-amber-500 hover:bg-amber-400 text-stone-900'
                     : 'bg-stone-900 hover:bg-stone-800 text-white'
                 }`}
               >
                 {option.cta}
-              </Link>
+              </button>
             </div>
           ))}
         </div>

@@ -44,7 +44,7 @@ export default function Home() {
         </section>
         
         <section id="options">
-          <StayOptions />
+          <StayOptions onApplyClick={() => openSarah("apply")} onHomesClick={() => openSarah("learn")} onTemporaryClick={() => openSarah("learn")} />
         </section>
         
         <section id="contact">
