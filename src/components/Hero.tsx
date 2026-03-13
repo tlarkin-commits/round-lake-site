@@ -1,9 +1,14 @@
 "use client";
 
 import { PropertyConfig } from "@/config/properties";
-import Link from "next/link";
 
-export default function Hero({ property }: { property: PropertyConfig }) {
+interface HeroProps {
+  property: PropertyConfig;
+  onApplyClick?: () => void;
+  onLearnClick?: () => void;
+}
+
+export default function Hero({ property, onApplyClick, onLearnClick }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center">
       {/* Full-bleed background photo - Overlook shot */}
@@ -49,20 +54,20 @@ export default function Hero({ property }: { property: PropertyConfig }) {
             </div>
           </div>
 
-          {/* Two clear CTAs */}
+          {/* Two clear CTAs with Sarah integration */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link 
-              href="/apply"
+            <button 
+              onClick={onApplyClick}
               className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-stone-900 font-semibold rounded-lg text-center transition-colors"
             >
               Apply for Residency
-            </Link>
-            <Link 
-              href="/temporary"
+            </button>
+            <button 
+              onClick={onLearnClick}
               className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg text-center border border-white/30 transition-colors"
             >
-              Temporary Stays
-            </Link>
+              Learn More
+            </button>
           </div>
         </div>
       </div>

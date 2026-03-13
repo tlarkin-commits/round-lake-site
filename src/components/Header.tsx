@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Header() {
+interface HeaderProps {
+  onLocationClick?: () => void;
+}
+
+export default function Header({ onLocationClick }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -21,7 +25,12 @@ export default function Header() {
         <nav className="hidden md:flex items-center gap-8">
           <a href="#gallery" className="text-stone-600 hover:text-amber-700 transition-colors">Gallery</a>
           <a href="#amenities" className="text-stone-600 hover:text-amber-700 transition-colors">Amenities</a>
-          <a href="#location" className="text-stone-600 hover:text-amber-700 transition-colors">Location</a>
+          <button 
+            onClick={onLocationClick}
+            className="text-stone-600 hover:text-amber-700 transition-colors"
+          >
+            Location
+          </button>
           <a 
             href="tel:+17607423933" 
             className="bg-amber-600 hover:bg-amber-700 text-white px-5 py-2 rounded-lg transition-colors font-medium"
@@ -50,7 +59,15 @@ export default function Header() {
         <div className="md:hidden bg-white border-t border-stone-200 px-6 py-4 space-y-4">
           <a href="#gallery" className="block text-stone-600 hover:text-amber-700">Gallery</a>
           <a href="#amenities" className="block text-stone-600 hover:text-amber-700">Amenities</a>
-          <a href="#location" className="block text-stone-600 hover:text-amber-700">Location</a>
+          <button 
+            onClick={() => {
+              onLocationClick?.();
+              setMenuOpen(false);
+            }}
+            className="block text-stone-600 hover:text-amber-700 text-left"
+          >
+            Location
+          </button>
           <a 
             href="tel:+17607423933" 
             className="block bg-amber-600 text-white text-center px-5 py-2 rounded-lg font-medium"
