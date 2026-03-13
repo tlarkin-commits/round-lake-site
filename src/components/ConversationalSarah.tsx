@@ -19,7 +19,7 @@ interface ConversationalSarahProps {
 
 const ConversationalSarah: React.FC<ConversationalSarahProps> = ({ 
   propertyId, 
-  apiBaseUrl = 'https://ops.coastmhp.com',
+  apiBaseUrl = 'http://72.60.115.201:3001',
   isOpen,
   onClose,
   initialFlow = 'general'
@@ -306,7 +306,7 @@ What brings you here today?`;
 
       console.log('🎯 Creating lead from Sarah conversation:', leadPayload);
 
-      const response = await fetch('https://ops.coastmhp.com/api/leasing/ai/leads', {
+      const response = await fetch('http://72.60.115.201:3001/api/leasing/ai/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(leadPayload)
@@ -318,7 +318,7 @@ What brings you here today?`;
         
         // Send manager email notification
         try {
-          await fetch('https://ops.coastmhp.com/api/contact/email', {
+          await fetch('http://72.60.115.201:3001/api/contact/email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
