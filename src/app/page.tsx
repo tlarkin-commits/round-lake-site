@@ -15,9 +15,9 @@ const property = properties.ranchocorrido;
 
 export default function Page() {
   const [sarahOpen, setSarahOpen] = useState(false);
-  const [sarahFlow, setSarahFlow] = useState<'apply' | 'tour' | 'learn' | 'contact' | 'general' | 'permanent-rv' | 'mobile-homes' | 'temporary'>('general');
+  const [sarahFlow, setSarahFlow] = useState<'apply' | 'tour' | 'learn' | 'contact' | 'general' | 'permanent-rv' | 'mobile-homes' | 'temporary' | 'permanent-rv' | 'mobile-homes' | 'temporary'>('general');
 
-  const openSarah = (flow: 'apply' | 'tour' | 'learn' | 'contact' | 'general' | 'permanent-rv' | 'mobile-homes' | 'temporary') => {
+  const openSarah = (flow: 'apply' | 'tour' | 'learn' | 'contact' | 'general' | 'permanent-rv' | 'mobile-homes' | 'temporary' | 'permanent-rv' | 'mobile-homes' | 'temporary') => {
     console.log('🎯 Opening Sarah with context:', flow);
     setSarahFlow(flow);
     setSarahOpen(true);
@@ -33,7 +33,7 @@ export default function Page() {
   return (
     <main className="min-h-screen">
       <Header onLocationClick={handleLocationClick} />
-      <Hero property={property} onApplyClick={() => openSarah("apply")} onLearnClick={() => openSarah("learn")} />
+      <Hero property={property} onApplyClick={() => openSarah("permanent-rv")} onLearnClick={() => openSarah("learn")} />
       
       <section id="features">
         <Features property={property} />
