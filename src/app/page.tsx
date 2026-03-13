@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import Gallery from "@/components/Gallery";
-import StayOptions from "@/components/StayOptions";
+import HousingOptions from "@/components/HousingOptions";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ConversationalSarah from "@/components/ConversationalSarah";
@@ -44,7 +44,7 @@ export default function Home() {
         </section>
         
         <section id="options">
-          <StayOptions onApplyClick={() => openSarah("apply")} onHomesClick={() => openSarah("learn")} onTemporaryClick={() => openSarah("learn")} />
+          <HousingOptions onApplyClick={() => openSarah("apply")} onHomesClick={() => openSarah("learn")} onTemporaryClick={() => openSarah("learn")} />
         </section>
         
         <section id="contact">

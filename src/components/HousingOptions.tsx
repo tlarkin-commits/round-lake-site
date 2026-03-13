@@ -1,12 +1,14 @@
 "use client";
 
-interface StayOptionsProps {
+interface HousingOptionsProps {
   onApplyClick?: () => void;
   onHomesClick?: () => void; 
   onTemporaryClick?: () => void;
 }
 
-export default function StayOptions({ onApplyClick, onHomesClick, onTemporaryClick }: StayOptionsProps) {
+export default function HousingOptions({ onApplyClick, onHomesClick, onTemporaryClick }: HousingOptionsProps) {
+  console.log("HousingOptions component loaded with handlers:", { onApplyClick: !!onApplyClick, onHomesClick: !!onHomesClick, onTemporaryClick: !!onTemporaryClick });
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6">
@@ -31,21 +33,15 @@ export default function StayOptions({ onApplyClick, onHomesClick, onTemporaryCli
             </p>
             <ul className="space-y-2 mb-8">
               <li className="flex items-center gap-2 text-sm">
-                <svg className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
+                <span className="text-amber-400">✓</span>
                 Full hookups
               </li>
               <li className="flex items-center gap-2 text-sm">
-                <svg className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
+                <span className="text-amber-400">✓</span>
                 Month-to-month available
               </li>
               <li className="flex items-center gap-2 text-sm">
-                <svg className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
+                <span className="text-amber-400">✓</span>
                 Community atmosphere
               </li>
             </ul>
@@ -66,21 +62,15 @@ export default function StayOptions({ onApplyClick, onHomesClick, onTemporaryCli
             </p>
             <ul className="space-y-2 mb-8">
               <li className="flex items-center gap-2 text-sm">
-                <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
+                <span className="text-amber-500">✓</span>
                 1 bed / 1 bath
               </li>
               <li className="flex items-center gap-2 text-sm">
-                <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
+                <span className="text-amber-500">✓</span>
                 Fully equipped
               </li>
               <li className="flex items-center gap-2 text-sm">
-                <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
+                <span className="text-amber-500">✓</span>
                 Utilities included
               </li>
             </ul>
@@ -101,21 +91,15 @@ export default function StayOptions({ onApplyClick, onHomesClick, onTemporaryCli
             </p>
             <ul className="space-y-2 mb-8">
               <li className="flex items-center gap-2 text-sm">
-                <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
+                <span className="text-amber-500">✓</span>
                 Nightly & weekly rates
               </li>
               <li className="flex items-center gap-2 text-sm">
-                <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
+                <span className="text-amber-500">✓</span>
                 Full hookups
               </li>
               <li className="flex items-center gap-2 text-sm">
-                <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
+                <span className="text-amber-500">✓</span>
                 All amenities
               </li>
             </ul>
