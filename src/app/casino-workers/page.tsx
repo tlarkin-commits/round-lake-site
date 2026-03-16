@@ -6,7 +6,7 @@ const config = getLandingPageBySlug("casino-workers")!;
 const property = properties.ranchocorrido;
 
 export default function CasinoWorkersPage() {
-  return <LandingTemplate config={config} property={property} />;
+  return <LandingTemplate config={config} property={property} minimal={true} />;
 }
 
 export const metadata = {

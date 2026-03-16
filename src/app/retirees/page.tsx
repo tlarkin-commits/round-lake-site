@@ -6,7 +6,7 @@ const config = getLandingPageBySlug("retirees")!;
 const property = properties.ranchocorrido;
 
 export default function RetireesPage() {
-  return <LandingTemplate config={config} property={property} />;
+  return <LandingTemplate config={config} property={property} minimal={true} />;
 }
 
 export const metadata = {

@@ -6,7 +6,7 @@ const config = getLandingPageBySlug("travel-nurses")!;
 const property = properties.ranchocorrido;
 
 export default function TravelNursesPage() {
-  return <LandingTemplate config={config} property={property} />;
+  return <LandingTemplate config={config} property={property} minimal={true} />;
 }
 
 export const metadata = {

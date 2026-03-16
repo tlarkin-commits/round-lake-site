@@ -3,16 +3,46 @@
 import { PropertyConfig } from "@/config/properties";
 import { LandingPageConfig } from "@/config/landingConfigs";
 import Link from "next/link";
+import { trackEvent } from "@/lib/gtag";
+
+// Best testimonial for trust badge
+const TRUST_QUOTE = {
+  text: "We're snowbirds and this is our 3rd year coming back. The community is wonderful and management really cares.",
+  author: "Robert T."
+};
 
 export default function LandingTemplate({ 
   config, 
-  property 
+  property,
+  minimal = false,
 }: { 
   config: LandingPageConfig; 
   property: PropertyConfig;
+  minimal?: boolean;
 }) {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pb-20 md:pb-0">
+      {/* Nav */}
+      {minimal ? (
+        <header className="sticky top-0 bg-white border-b border-stone-200 z-40 px-6 py-3 flex items-center justify-between">
+          <img
+            src="/images/rancho-corrido/logo-transparent.svg"
+            alt="Rancho Corrido"
+            className="h-12 w-auto"
+          />
+          <a
+            href={`tel:${property.phone}`}
+            onClick={() => trackEvent('phone_call', { source: 'landing_minimal_nav' })}
+            className="flex items-center gap-2 text-amber-600 font-semibold hover:text-amber-700"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            {property.phone}
+          </a>
+        </header>
+      ) : null}
+
       {/* Hero */}
       <section className="relative py-20 bg-gradient-to-br from-green-900 to-green-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,12 +62,19 @@ export default function LandingTemplate({
               >
                 {config.ctaPrimary.text}
               </Link>
-              <Link
-                href={config.ctaSecondary.link}
+              <a
+                href={`tel:${property.phone}`}
+                onClick={() => trackEvent('phone_call', { source: 'landing_hero' })}
                 className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
               >
-                {config.ctaSecondary.text}
-              </Link>
+                Call {property.phone}
+              </a>
+            </div>
+
+            {/* Trust badge */}
+            <div className="mt-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 max-w-lg">
+              <p className="text-white/90 italic text-sm">&ldquo;{TRUST_QUOTE.text}&rdquo;</p>
+              <p className="text-green-300 text-sm font-medium mt-2">— {TRUST_QUOTE.author}, Current Resident</p>
             </div>
           </div>
         </div>
@@ -98,6 +135,7 @@ export default function LandingTemplate({
             </Link>
             <a
               href={`tel:${property.phone}`}
+              onClick={() => trackEvent('phone_call', { source: 'landing_cta' })}
               className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
             >
               Call {property.phone}
@@ -105,6 +143,23 @@ export default function LandingTemplate({
           </div>
         </div>
       </section>
+
+      {/* Sticky mobile CTA bar */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-stone-200 px-4 py-3 flex gap-3 z-40 shadow-lg">
+        <a
+          href={`tel:${property.phone}`}
+          onClick={() => trackEvent('phone_call', { source: 'landing_sticky_mobile' })}
+          className="flex-1 bg-amber-500 hover:bg-amber-400 text-stone-900 font-semibold py-3 rounded-lg text-center transition-colors"
+        >
+          Call Now
+        </a>
+        <Link
+          href={config.ctaPrimary.link}
+          className="flex-1 bg-green-700 hover:bg-green-600 text-white font-semibold py-3 rounded-lg text-center transition-colors"
+        >
+          Apply
+        </Link>
+      </div>
     </main>
   );
 }

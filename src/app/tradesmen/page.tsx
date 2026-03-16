@@ -6,7 +6,7 @@ const config = getLandingPageBySlug("tradesmen")!;
 const property = properties.ranchocorrido;
 
 export default function TradesmenPage() {
-  return <LandingTemplate config={config} property={property} />;
+  return <LandingTemplate config={config} property={property} minimal={true} />;
 }
 
 export const metadata = {

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { PropertyConfig } from "@/config/properties";
 
 interface HeroProps {
@@ -11,10 +12,14 @@ interface HeroProps {
 export default function Hero({ property, onApplyClick, onLearnClick }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center">
-      {/* Full-bleed background photo - Overlook shot */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(/images/hero.jpg)` }}
+      {/* Full-bleed background photo - optimized with Next.js Image */}
+      <Image
+        src="/images/hero.jpg"
+        alt="Rancho Corrido RV Resort and Mobile Home Community in Pauma Valley, San Diego County"
+        fill
+        priority
+        className="object-cover object-center"
+        sizes="100vw"
       />
       <div className="absolute inset-0 bg-black/50" />
 

@@ -31,8 +31,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-stone-200 text-center text-sm text-stone-500">
-          © {new Date().getFullYear()} Rancho Corrido. All rights reserved.
+        <div className="mt-8 pt-8 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-stone-500">
+          <span>© {new Date().getFullYear()} Rancho Corrido. All rights reserved.</span>
+          <div className="flex gap-6">
+            <Link href="/privacy-policy" className="hover:text-stone-700 transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-stone-700 transition-colors">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>

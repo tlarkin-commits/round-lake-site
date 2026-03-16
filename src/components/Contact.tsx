@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { trackEvent } from "@/lib/gtag";
 import { PropertyConfig } from "@/config/properties";
 
 interface ContactProps {
@@ -17,6 +19,7 @@ export default function Contact({ property, onContactClick }: ContactProps) {
     interest: '',
     message: ''
   });
+  const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -61,8 +64,8 @@ export default function Contact({ property, onContactClick }: ContactProps) {
       });
       
       if (leadResponse.ok) {
-        setSubmitted(true);
-        setFormData({ firstName: '', lastName: '', email: '', phone: '', interest: '', message: '' });
+        trackEvent('generate_lead', { method: 'contact_form' });
+        router.push('/thank-you');
         
         // Log success
         console.log('📧 Contact form submitted and email sent to manager@ranchocorridopark.com');

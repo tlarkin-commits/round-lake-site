@@ -41,7 +41,7 @@ export default function Reviews({ property }: { property: PropertyConfig }) {
             Loved by Guests
           </h2>
           <p className="text-gray-600">
-            Rated 9.9/10 on RV LIFE • 4.8 stars on Google
+            What our residents are saying
           </p>
         </div>
         
