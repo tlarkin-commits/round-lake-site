@@ -1,39 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { properties } from "@/config/properties";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import Listings from "@/components/Listings";
 import Gallery from "@/components/Gallery";
 import HousingOptions from "@/components/HousingOptions";
 import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import ConversationalSarah from "@/components/ConversationalSarah";
+import ChatWidget from "@/components/ChatWidget";
 import ChatLauncher from "@/components/ChatLauncher";
 import Location from "@/components/Location";
 
-const property = properties.ranchocorrido;
+const property = properties.roundlake;
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "RVPark"],
-  "name": "Rancho Corrido RV Resort & Mobile Home Community",
-  "url": "https://www.ranchocorridopark.com",
-  "telephone": "+17607423755",
+  "@type": ["LocalBusiness", "MobileHomePark"],
+  "name": "Round Lake Community",
+  "url": "https://www.roundlakecommunity.com",
+  "telephone": "+15418842520",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "21501 CA-76",
-    "addressLocality": "Pauma Valley",
-    "addressRegion": "CA",
-    "postalCode": "92061",
+    "streetAddress": "4000 Round Lake Rd",
+    "addressLocality": "Klamath Falls",
+    "addressRegion": "OR",
+    "postalCode": "97601",
     "addressCountry": "US"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 33.3497,
-    "longitude": -116.9619
+    "latitude": 42.1837,
+    "longitude": -121.8231
   },
   "openingHoursSpecification": [
     {
@@ -43,7 +44,7 @@ const localBusinessSchema = {
       "closes": "17:00"
     }
   ],
-  "description": "Affordable RV and mobile home community in Pauma Valley, San Diego County. Monthly and extended stays available. 5 minutes to Harrah's Resort SoCal, 20 minutes to Temecula wine country.",
+  "description": "Peaceful manufactured home and RV community on 150 acres near Klamath Falls, Oregon. Golf course, fishing pond, hiking trails on-site.",
   "priceRange": "$$"
 };
 
@@ -53,68 +54,57 @@ const faqSchema = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How much is lot rent at Rancho Corrido?",
+      "name": "How much is lot rent at Round Lake Community?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Lot rent varies depending on the site and lease term. Please contact us at (760) 742-3755 or use our online contact form for current pricing."
+        "text": "Lot rent varies depending on the site and lease term. Please contact us at (541) 884-2520 or use our online contact form for current pricing."
       }
     },
     {
       "@type": "Question",
-      "name": "Are pets allowed at Rancho Corrido?",
+      "name": "Are pets allowed at Round Lake Community?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, we are pet-friendly! We accept dogs and cats with a pet deposit. Weight restrictions may apply. Contact us for current pet policy details."
+        "text": "Yes, we are pet-friendly. Please contact us for current pet policy and any breed or weight restrictions."
       }
     },
     {
       "@type": "Question",
-      "name": "How do I apply for residency?",
+      "name": "How do I apply for residency at Round Lake?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can start the application process by chatting with our leasing assistant Sarah on this website, calling us at (760) 742-3755, or submitting the contact form. We'll walk you through income and credit requirements."
+        "text": "You can start by chatting with our leasing assistant on this website, calling (541) 884-2520, or submitting the contact form. We'll walk you through the application process."
       }
     },
     {
       "@type": "Question",
-      "name": "How close is Rancho Corrido to Harrah's Resort SoCal?",
+      "name": "Is there a golf course at Round Lake Community?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Rancho Corrido is approximately 5 minutes from Harrah's Resort SoCal in Valley Center, making it an ideal home base for casino employees and guests."
+        "text": "Yes! Round Lake features a full 18-hole golf course with putting green, cart rentals, and a clubhouse — available to residents and visitors."
       }
     },
     {
       "@type": "Question",
-      "name": "Do you offer short-term or temporary stays?",
+      "name": "How far is Round Lake Community from Klamath Falls?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, we offer both monthly and extended-stay options for RV sites. Temporary accommodations are ideal for seasonal workers, travel nurses, and those relocating to the area."
+        "text": "Round Lake Community is located approximately 15 minutes from downtown Klamath Falls at 4000 Round Lake Rd, Klamath Falls, OR 97601."
       }
     }
   ]
 };
 
-type SarahFlow = 'apply' | 'tour' | 'learn' | 'contact' | 'general' | 'permanent-rv' | 'mobile-homes' | 'temporary';
+export default function Home() {
+  const [chatOpen, setChatOpen] = useState(false);
+  const chatRef = useRef<{ open: () => void } | null>(null);
 
-export default function Page() {
-  const [sarahOpen, setSarahOpen] = useState(false);
-  const [sarahFlow, setSarahFlow] = useState<SarahFlow>('general');
-
-  const openSarah = (flow: SarahFlow) => {
-    setSarahFlow(flow);
-    setSarahOpen(true);
-  };
-
-  const handleLocationClick = () => {
-    const locationSection = document.getElementById('location-section');
-    if (locationSection) {
-      locationSection.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleApplyClick = () => {
+    setChatOpen(true);
   };
 
   return (
-    <main className="min-h-screen">
-      {/* Structured Data */}
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
@@ -124,48 +114,37 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <Header onLocationClick={handleLocationClick} />
-      <Hero property={property} onApplyClick={() => openSarah("permanent-rv")} onLearnClick={() => openSarah("learn")} />
-      
-      <section id="features">
-        <Features property={property} />
-      </section>
-      
-      <section id="gallery">
-        <Gallery />
-      </section>
-      
-      <section id="options">
-        <HousingOptions 
-          onApplyClick={() => openSarah("permanent-rv")} 
-          onHomesClick={() => openSarah("mobile-homes")} 
-          onTemporaryClick={() => openSarah("temporary")} 
-        />
-      </section>
+      <Header property={property} onApplyClick={handleApplyClick} />
 
-      <section id="location-section">
-        <Location property={property} />
-      </section>
+      <main>
+        <Hero property={property} onApplyClick={handleApplyClick} />
+        <section id="features">
+          <Features property={property} />
+        </section>
+        <Listings />
+        <section id="gallery">
+          <Gallery property={property} />
+        </section>
+        <section id="options">
+          <HousingOptions property={property} onApplyClick={handleApplyClick} />
+        </section>
+        <Reviews property={property} />
+        <section id="location-section">
+          <Location property={property} />
+        </section>
+        <section id="contact">
+          <Contact property={property} />
+        </section>
+      </main>
 
-      <Reviews property={property} />
-      
-      <section id="contact">
-        <Contact property={property} />
-      </section>
-      
-      <Footer />
-      
-      <ConversationalSarah
-        propertyId="3"
-        isOpen={sarahOpen}
-        onClose={() => setSarahOpen(false)}
-        initialFlow={sarahFlow}
+      <Footer property={property} />
+
+      <ChatWidget
+        property={property}
+        isOpen={chatOpen}
+        onToggle={() => setChatOpen(!chatOpen)}
       />
-
-      <ChatLauncher
-        onOpen={() => openSarah('general')}
-        isOpen={sarahOpen}
-      />
-    </main>
+      <ChatLauncher onOpen={() => setChatOpen(true)} isOpen={chatOpen} />
+    </>
   );
 }

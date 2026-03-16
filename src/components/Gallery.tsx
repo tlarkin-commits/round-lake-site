@@ -2,40 +2,42 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { PropertyConfig } from "@/config/properties";
 
+// Round Lake photos — update src paths once real photos are uploaded
 const images = [
-  { src: '/images/rancho-corrido/pool-palm-trees.jpg', alt: 'Pool with palm trees at Rancho Corrido Park Pauma Valley CA' },
-  { src: '/images/rancho-corrido/playground-mountain.jpg', alt: 'Playground with mountain backdrop at Rancho Corrido RV Resort' },
-  { src: '/images/rancho-corrido/park-grounds-flag.jpg', alt: 'Park grounds and American flag at Rancho Corrido Pauma Valley' },
-  { src: '/images/rancho-corrido/valley-cabin-aerial.jpg', alt: 'Aerial view of cabin and vineyard at Rancho Corrido Park' },
-  { src: '/images/rancho-corrido/park-overlook-wide.jpg', alt: 'Wide overlook of Rancho Corrido RV Resort from hilltop San Diego County' },
-  { src: '/images/rancho-corrido/community-cabins-lawn.jpg', alt: 'Community cabins and green lawn at Rancho Corrido Park' },
-  { src: '/images/rancho-corrido/basketball-court-pines.jpg', alt: 'Basketball court surrounded by pine trees at Rancho Corrido' },
-  { src: '/images/rancho-corrido/park-swings-mountain.jpg', alt: 'Swing set with mountain views at Rancho Corrido RV Resort Pauma Valley' },
-  { src: '/images/rancho-corrido/mountain-vista-park.jpg', alt: 'Mountain vista from Rancho Corrido Mobile Home Park San Diego County' },
-  { src: '/images/rancho-corrido/office-clubhouse-palm.jpg', alt: 'Office and clubhouse with palm tree at Rancho Corrido Park' },
-  { src: '/images/rancho-corrido/park-road-office.jpg', alt: 'Paved road through Rancho Corrido RV Resort community' },
-  { src: '/images/rancho-corrido/park-lawn-trees.jpg', alt: 'Green lawn and mature trees at Rancho Corrido Pauma Valley CA' },
+  { src: '/images/round-lake/golf-course-fairway.jpg', alt: 'Golf course fairway at Round Lake Community Klamath Falls Oregon' },
+  { src: '/images/round-lake/fishing-pond-sunset.jpg', alt: 'Fishing pond at sunset at Round Lake Community' },
+  { src: '/images/round-lake/hiking-trail-forest.jpg', alt: 'Hiking trail through forest at Round Lake Community Oregon' },
+  { src: '/images/round-lake/rv-sites-trees.jpg', alt: 'RV sites surrounded by trees at Round Lake Community Klamath Falls' },
+  { src: '/images/round-lake/clubhouse-exterior.jpg', alt: 'Clubhouse exterior at Round Lake Community golf course' },
+  { src: '/images/round-lake/home-lots-landscape.jpg', alt: 'Manufactured home lots with landscaping at Round Lake Community' },
+  { src: '/images/round-lake/community-grounds.jpg', alt: 'Community grounds at Round Lake Community Oregon' },
+  { src: '/images/round-lake/golf-putting-green.jpg', alt: 'Putting green at Round Lake Community golf course Klamath Falls' },
+  { src: '/images/round-lake/lake-view.jpg', alt: 'Scenic lake view at Round Lake Community Oregon' },
+  { src: '/images/round-lake/aerial-community.jpg', alt: 'Aerial view of Round Lake Community on 150 acres Klamath Falls OR' },
+  { src: '/images/round-lake/community-entrance.jpg', alt: 'Community entrance at Round Lake Community Klamath Falls Oregon' },
+  { src: '/images/round-lake/mountain-view-site.jpg', alt: 'Mountain views from Round Lake Community mobile home site' },
 ];
 
-export default function Gallery() {
+export default function Gallery({ property }: { property: PropertyConfig }) {
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   return (
     <section id="gallery" className="py-20 bg-stone-50">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-stone-900 mb-2 text-center">
-          Your New Home
+          Life at Round Lake
         </h2>
         <p className="text-stone-600 text-center mb-12">
-          Nestled in the hills of Pauma Valley
+          150 acres of Oregon countryside — golf, fishing, hiking, and community
         </p>
-        
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {images.map((image, i) => (
-            <div 
-              key={i} 
-              className="relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer group"
+            <div
+              key={i}
+              className="relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer group bg-stone-200"
               onClick={() => setLightbox(i)}
             >
               <Image
@@ -53,18 +55,18 @@ export default function Gallery() {
 
       {/* Lightbox */}
       {lightbox !== null && (
-        <div 
+        <div
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
           onClick={() => setLightbox(null)}
         >
-          <button 
-            className="absolute top-4 right-4 text-white text-4xl hover:text-amber-400"
+          <button
+            className="absolute top-4 right-4 text-white text-4xl hover:opacity-75"
             onClick={() => setLightbox(null)}
           >
             ×
           </button>
-          <button 
-            className="absolute left-4 text-white text-4xl hover:text-amber-400 p-2"
+          <button
+            className="absolute left-4 text-white text-4xl hover:opacity-75 p-2"
             onClick={(e) => { e.stopPropagation(); setLightbox((lightbox - 1 + images.length) % images.length); }}
           >
             ‹
@@ -78,8 +80,8 @@ export default function Gallery() {
               sizes="90vw"
             />
           </div>
-          <button 
-            className="absolute right-4 text-white text-4xl hover:text-amber-400 p-2"
+          <button
+            className="absolute right-4 text-white text-4xl hover:opacity-75 p-2"
             onClick={(e) => { e.stopPropagation(); setLightbox((lightbox + 1) % images.length); }}
           >
             ›

@@ -183,6 +183,125 @@ export const properties: Record<string, PropertyConfig> = {
       ],
     },
   },
+
+  roundlake: {
+    id: 'roundlake',
+    name: 'Round Lake Community',
+    tagline: 'Experience Country Life in Nature',
+    domain: 'roundlakecommunity.com',
+    address: '4000 Round Lake Rd',
+    city: 'Klamath Falls',
+    state: 'OR',
+    zip: '97601',
+    phone: '(541) 884-2520',
+    email: 'office@roundlakecommunity.com',
+    opsPropertyId: '2',
+    colors: {
+      primary: '#1B4D3E',
+      primaryDark: '#133829',
+      accent: '#4A90D9',
+      hero: 'from-green-900/80 to-blue-900/60',
+    },
+    hero: {
+      headline: 'Experience Country Life in Nature',
+      subheadline: '150 acres of peaceful living near Klamath Falls. Golf course, fishing pond, hiking trails, and a welcoming community — 15 minutes from town.',
+      image: '/images/round-lake/hero.jpg',
+      stats: [
+        { label: 'From Klamath Falls', value: '15 min' },
+        { label: 'Acres of nature', value: '150' },
+        { label: 'Hole golf course', value: '18' },
+      ],
+    },
+    paths: {
+      permanent: {
+        title: 'Make It Home',
+        subtitle: 'Affordable manufactured home lots and mobile home spaces in a beautiful lakeside setting.',
+        cta: 'Apply for Residency',
+        link: '/apply',
+      },
+      temporary: {
+        title: 'RV Sites Available',
+        subtitle: 'Spacious RV sites with full hookups. Short and long-term stays welcome.',
+        cta: 'Check Availability',
+        link: '/availability',
+      },
+    },
+    features: [
+      { icon: '⛳', title: '18-Hole Golf Course', description: 'Full 18-hole course with putting green, cart rentals, and clubhouse' },
+      { icon: '🎣', title: 'Fishing Pond', description: 'On-site fishing pond stocked and ready for residents' },
+      { icon: '🥾', title: 'Hiking & Biking Trails', description: 'Miles of scenic trails through 150 acres of Oregon high plain' },
+      { icon: '🏕️', title: 'RV Sites', description: 'Full hookup RV sites with 30/50 amp, water, and sewer' },
+      { icon: '🏡', title: 'Manufactured Homes', description: 'Affordable home lots in a safe, well-maintained community' },
+      { icon: '🏌️', title: 'Clubhouse', description: 'Community clubhouse available for residents and events' },
+    ],
+    stayOptions: [
+      {
+        id: 'manufactured-homes',
+        title: 'Manufactured Home Lots',
+        description: 'Long-term lot rentals for manufactured and mobile homes. Peaceful country setting with all the amenities of a full community.',
+        features: [
+          'Affordable lot rent',
+          'Quiet country neighborhood',
+          'Golf course access',
+          'On-site fishing',
+          'Pet friendly',
+        ],
+        ctaText: 'Apply for a Lot',
+        ctaLink: '/apply',
+      },
+      {
+        id: 'rv-sites',
+        title: 'RV Sites',
+        description: 'Spacious sites with full hookups. Ideal for long-term residents and seasonal visitors who want to enjoy Oregon countryside.',
+        features: [
+          'Full hookups (30/50 amp)',
+          'Water & sewer included',
+          'Golf course access',
+          'Hiking trail access',
+        ],
+        ctaText: 'Check Availability',
+        ctaLink: '/availability',
+      },
+    ],
+    community: {
+      headline: 'A Community Close to Nature',
+      description: 'Discover Round Lake, a peaceful mobile home community near Klamath Falls dedicated to providing families with a serene country lifestyle. Our 150-acre property offers a unique blend of nature, with a golf course, fishing pond, hiking trails, and spacious RV sites.',
+      highlights: [
+        'Family-friendly community',
+        '150 acres of natural beauty',
+        'Golf, fishing, and hiking on-site',
+        'Affordable lot and site rents',
+        'Professionally managed by Coast MHP',
+      ],
+    },
+    location: {
+      highlights: [
+        { place: 'Downtown Klamath Falls', time: '15 min' },
+        { place: 'Crater Lake National Park', time: '1 hr' },
+        { place: 'Klamath Falls Airport (LMT)', time: '20 min' },
+        { place: 'OIT - Oregon Tech Campus', time: '20 min' },
+        { place: 'Fishing on Upper Klamath Lake', time: '10 min' },
+        { place: 'Hiking at Klamath Basin', time: 'Nearby' },
+      ],
+    },
+    social: {
+      facebook: 'https://facebook.com/roundlakecommunity',
+    },
+    seo: {
+      title: 'Round Lake Community | Affordable Country Living Near Klamath Falls, OR',
+      description: 'Find your home at Round Lake Community in Klamath Falls, OR. Affordable manufactured home lots and RV sites on 150 acres with golf course, fishing pond, and hiking trails.',
+      keywords: [
+        'mobile home park Klamath Falls',
+        'manufactured homes Oregon',
+        'RV park Klamath Falls',
+        'affordable housing Klamath Falls',
+        'Round Lake Community',
+        'country living Oregon',
+        'golf course community Oregon',
+        'lot rent Klamath Falls',
+      ],
+    },
+  },
 };
 
 export function getPropertyById(id: string): PropertyConfig | null {

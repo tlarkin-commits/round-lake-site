@@ -16,8 +16,10 @@ function getSessionId(): string {
   return sessionId;
 }
 
-export default function ChatWidget({ property }: { property: PropertyConfig }) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function ChatWidget({ property, isOpen: externalIsOpen, onToggle }: { property: PropertyConfig; isOpen?: boolean; onToggle?: () => void }) {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalOpen;
+  const setIsOpen = (v: boolean) => { if (onToggle) { onToggle(); } else { setInternalOpen(v); } };
   const [messages, setMessages] = useState<{role: string; content: string}[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);

@@ -1,12 +1,15 @@
 "use client";
 
+import { PropertyConfig } from "@/config/properties";
+
 interface HousingOptionsProps {
+  property?: PropertyConfig;
   onApplyClick?: () => void;
   onHomesClick?: () => void; 
   onTemporaryClick?: () => void;
 }
 
-export default function HousingOptions({ onApplyClick, onHomesClick, onTemporaryClick }: HousingOptionsProps) {
+export default function HousingOptions({ property, onApplyClick, onHomesClick, onTemporaryClick }: HousingOptionsProps) {
   console.log("HousingOptions component loaded with handlers:", { onApplyClick: !!onApplyClick, onHomesClick: !!onHomesClick, onTemporaryClick: !!onTemporaryClick });
 
   return (
