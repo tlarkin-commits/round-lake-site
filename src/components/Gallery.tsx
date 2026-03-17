@@ -5,16 +5,15 @@ import Image from "next/image";
 import { PropertyConfig } from "@/config/properties";
 
 const images = [
-  { src: '/images/round-lake/community-aerial.jpg', alt: 'Aerial view of Round Lake Community — pond, golf course, and 150 acres of Oregon countryside' },
-  { src: '/images/round-lake/golf-course-aerial.jpg', alt: 'Round Lake Golf Course clubhouse exterior with pull carts and American flag' },
-  { src: '/images/round-lake/golf-fairway.jpg', alt: 'Golf course fairway at Round Lake Community Klamath Falls Oregon' },
-  { src: '/images/round-lake/golf-green.jpg', alt: 'Putting green and clubhouse at Round Lake Community golf course' },
-  { src: '/images/round-lake/golf-course-1.jpg', alt: 'Round Lake Community golf course and grounds' },
-  { src: '/images/round-lake/golf-course-2.jpg', alt: 'Community office and golf facilities at Round Lake Community' },
-  { src: '/images/round-lake/golf-course-3.jpg', alt: 'Outdoor deck and patio with stone chimney at Round Lake Community clubhouse' },
-  { src: '/images/round-lake/community-grounds.jpg', alt: 'Community street with manufactured homes and trees at Round Lake Community' },
-  { src: '/images/round-lake/community-view.jpg', alt: 'Scenic view of Round Lake Community in Klamath Falls Oregon' },
-  { src: '/images/round-lake/hero.jpg', alt: 'Aerial drone view of Round Lake Community on 150 acres near Klamath Falls Oregon' },
+  { src: '/images/round-lake/hero-aerial.jpg', alt: 'Aerial drone view of Round Lake Community — golf course, fishing pond, and fall foliage on 150 acres near Klamath Falls Oregon' },
+  { src: '/images/round-lake/lake-view.jpg', alt: 'Scenic fishing pond at Round Lake Community with mountains and forest in Klamath Falls Oregon' },
+  { src: '/images/round-lake/putting-green.jpg', alt: 'Putting green and golf clubhouse at Round Lake Community golf course Klamath Falls' },
+  { src: '/images/round-lake/clubhouse-exterior.jpg', alt: 'Round Lake Community golf clubhouse exterior with pull carts and fall foliage' },
+  { src: '/images/round-lake/clubhouse-deck.jpg', alt: 'Outdoor deck and patio with green umbrellas at Round Lake Community clubhouse' },
+  { src: '/images/round-lake/clubhouse-patio.jpg', alt: 'Clubhouse patio with stone fireplace and outdoor seating at Round Lake Community' },
+  { src: '/images/round-lake/clubhouse-interior.jpg', alt: 'Clubhouse interior with pool table, bar, and stone fireplace at Round Lake Community' },
+  { src: '/images/round-lake/community-office.jpg', alt: 'Round Lake Community office with American flag and golf cart rentals' },
+  { src: '/images/round-lake/community-street.jpg', alt: 'Tree-lined community street with manufactured homes at Round Lake Community Klamath Falls Oregon' },
 ];
 
 export default function Gallery({ property }: { property: PropertyConfig }) {
@@ -30,7 +29,7 @@ export default function Gallery({ property }: { property: PropertyConfig }) {
           150 acres of Oregon countryside — golf, fishing, hiking, and community
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3">
           {images.map((image, i) => (
             <div
               key={i}
@@ -41,7 +40,7 @@ export default function Gallery({ property }: { property: PropertyConfig }) {
                 src={image.src}
                 alt={image.alt}
                 fill
-                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                sizes="(max-width: 768px) 50vw, 33vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />

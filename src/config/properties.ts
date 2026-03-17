@@ -205,7 +205,7 @@ export const properties: Record<string, PropertyConfig> = {
     hero: {
       headline: 'Experience Country Life in Nature',
       subheadline: '150 acres of peaceful living near Klamath Falls. Golf course, fishing pond, hiking trails, and a welcoming community — 15 minutes from town.',
-      image: '/images/round-lake/hero.jpg',
+      image: '/images/round-lake/hero-aerial.jpg',
       stats: [
         { label: 'From Klamath Falls', value: '15 min' },
         { label: 'Acres of nature', value: '150' },
