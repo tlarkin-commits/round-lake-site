@@ -13,7 +13,7 @@ export default function Community({ property }: { property: PropertyConfig }) {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
                 src="/images/community-1.jpg" 
-                alt="Rancho Corrido community" 
+                alt="Round Lake Community" 
                 className="w-full h-[500px] object-cover"
               />
               {/* Warm overlay */}

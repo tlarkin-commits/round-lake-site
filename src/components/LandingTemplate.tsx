@@ -27,7 +27,7 @@ export default function LandingTemplate({
         <header className="sticky top-0 bg-white border-b border-stone-200 z-40 px-6 py-3 flex items-center justify-between">
           <img
             src="/images/rancho-corrido/logo-transparent.svg"
-            alt="Rancho Corrido"
+            alt="Round Lake Community"
             className="h-12 w-auto"
           />
           <a
@@ -84,7 +84,7 @@ export default function LandingTemplate({
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-            Why {config.demographic} Choose Rancho Corrido
+            Why {config.demographic} Choose Round Lake
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             {config.benefits.map((benefit, idx) => (

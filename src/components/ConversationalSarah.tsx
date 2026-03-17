@@ -66,14 +66,14 @@ const ConversationalSarah: React.FC<ConversationalSarahProps> = ({
           // First visit — show a single concise greeting
           setMessages([{
             role: 'assistant',
-            content: "Hi! I'm Sarah from Rancho Corrido Park. What can I help you with today?"
+            content: "Hi! I'm Sarah from Round Lake Community. What can I help you with today?"
           }]);
         }
       })
       .catch(() => {
         setMessages([{
           role: 'assistant',
-          content: "Hi! I'm Sarah from Rancho Corrido Park. What can I help you with today?"
+          content: "Hi! I'm Sarah from Round Lake Community. What can I help you with today?"
         }]);
       });
   }, [isOpen, initialized]);
@@ -151,12 +151,12 @@ const ConversationalSarah: React.FC<ConversationalSarahProps> = ({
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <img
               src="/images/rancho-corrido/logo-transparent.svg"
-              alt="Rancho Corrido"
+              alt="Round Lake Community"
               style={{ width: '48px', height: '48px', objectFit: 'contain', borderRadius: '8px', backgroundColor: 'white', padding: '4px' }}
             />
             <div>
               <h3 style={{ margin: 0, fontSize: '16px', fontWeight: '700', letterSpacing: '0.01em' }}>Sarah</h3>
-              <p style={{ margin: 0, fontSize: '12px', opacity: 0.75 }}>Rancho Corrido · Leasing Assistant</p>
+              <p style={{ margin: 0, fontSize: '12px', opacity: 0.75 }}>Round Lake · Leasing Assistant</p>
             </div>
           </div>
           <button onClick={onClose} style={{
@@ -208,7 +208,7 @@ const ConversationalSarah: React.FC<ConversationalSarahProps> = ({
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && handleSend()}
-            placeholder="Ask me anything about Rancho Corrido…"
+            placeholder="Ask me anything about Round Lake…"
             disabled={loading}
             style={{
               flex: 1, padding: '12px 16px',

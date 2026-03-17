@@ -32,7 +32,7 @@ export default function HousingOptions({ property, onApplyClick, onHomesClick, o
             </span>
             <h3 className="text-xl font-bold mt-2 mb-3">Permanent RV Living</h3>
             <p className="mb-6 text-stone-300">
-              Make Rancho Corrido your home. Monthly rates for families, workers, and retirees.
+              Make Round Lake your home. Monthly rates for families, workers, and retirees.
             </p>
             <ul className="space-y-2 mb-8">
               <li className="flex items-center gap-2 text-sm">
