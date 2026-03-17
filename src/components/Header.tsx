@@ -36,7 +36,7 @@ export default function Header({ property, onApplyClick, onLocationClick }: Head
         <nav className="hidden md:flex items-center gap-8">
           <a href="#gallery" className="text-stone-600 hover:text-stone-900 transition-colors text-sm">Gallery</a>
           <a href="#features" className="text-stone-600 hover:text-stone-900 transition-colors text-sm">Amenities</a>
-          <a href="#listings" className="text-stone-600 hover:text-stone-900 transition-colors text-sm">Available Units</a>
+          <a href="#options" className="text-stone-600 hover:text-stone-900 transition-colors text-sm">Available Units</a>
           <a href="/utility" className="text-stone-600 hover:text-stone-900 transition-colors text-sm">Utility</a>
           <button
             onClick={() => {
@@ -78,7 +78,7 @@ export default function Header({ property, onApplyClick, onLocationClick }: Head
         <div className="md:hidden bg-white border-t border-stone-200 px-6 py-4 space-y-4">
           <a href="#gallery" className="block text-stone-600 hover:text-stone-900 text-sm" onClick={() => setMenuOpen(false)}>Gallery</a>
           <a href="#features" className="block text-stone-600 hover:text-stone-900 text-sm" onClick={() => setMenuOpen(false)}>Amenities</a>
-          <a href="#listings" className="block text-stone-600 hover:text-stone-900 text-sm" onClick={() => setMenuOpen(false)}>Available Units</a>
+          <a href="#options" className="block text-stone-600 hover:text-stone-900 text-sm" onClick={() => setMenuOpen(false)}>Available Units</a>
           <button
             onClick={() => {
               document.getElementById('location-section')?.scrollIntoView({ behavior: 'smooth' });
