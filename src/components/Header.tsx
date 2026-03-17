@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { trackEvent } from "@/lib/gtag";
 import { PropertyConfig } from "@/config/properties";
@@ -18,16 +19,17 @@ export default function Header({ property, onApplyClick, onLocationClick }: Head
 
   return (
     <header className="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-stone-200">
-      <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-        {/* Logo / Brand */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold" style={{ backgroundColor: property.colors.primary }}>
-            RL
-          </div>
-          <div>
-            <div className="font-bold text-stone-900 leading-tight text-sm">{property.name}</div>
-            <div className="text-xs text-stone-500 leading-tight hidden sm:block">Klamath Falls, OR</div>
-          </div>
+      <div className="max-w-6xl mx-auto px-6 py-2 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/round-lake/logo.jpg"
+            alt="Round Lake Community"
+            width={160}
+            height={60}
+            className="h-12 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
