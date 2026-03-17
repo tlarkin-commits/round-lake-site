@@ -121,7 +121,7 @@ export default function Home() {
         <section id="features">
           <Features property={property} />
         </section>
-        <Listings />
+        <Listings property={property} />
         <section id="gallery">
           <Gallery property={property} />
         </section>
