@@ -150,7 +150,7 @@ const ConversationalSarah: React.FC<ConversationalSarahProps> = ({
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <img
-              src="/images/rancho-corrido/logo-transparent.svg"
+              src="/images/round-lake/logo.jpg"
               alt="Round Lake Community"
               style={{ width: '48px', height: '48px', objectFit: 'contain', borderRadius: '8px', backgroundColor: 'white', padding: '4px' }}
             />

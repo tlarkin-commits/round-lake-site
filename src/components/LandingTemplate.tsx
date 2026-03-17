@@ -26,7 +26,7 @@ export default function LandingTemplate({
       {minimal ? (
         <header className="sticky top-0 bg-white border-b border-stone-200 z-40 px-6 py-3 flex items-center justify-between">
           <img
-            src="/images/rancho-corrido/logo-transparent.svg"
+            src="/images/round-lake/logo.jpg"
             alt="Round Lake Community"
             className="h-12 w-auto"
           />
