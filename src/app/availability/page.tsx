@@ -23,7 +23,7 @@ export default function AvailabilityPage() {
       {/* AppFolio Listings Embed — full viewport height */}
       <div className="flex-1 relative" style={{minHeight: "calc(100vh - 72px)"}}>
         <iframe
-          src="https://www.roundlakecommunity.com/availability"
+          src="https://coastmanufactured.appfolio.com/listings/"
           title="Available Units at Round Lake Community"
           className="w-full border-0 absolute inset-0"
           style={{height: "calc(100vh - 72px)", minHeight: "600px"}}

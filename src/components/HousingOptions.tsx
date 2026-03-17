@@ -5,11 +5,9 @@ import { PropertyConfig } from "@/config/properties";
 interface HousingOptionsProps {
   property?: PropertyConfig;
   onApplyClick?: () => void;
-  onHomesClick?: () => void;
-  onTemporaryClick?: () => void;
 }
 
-export default function HousingOptions({ property, onApplyClick, onHomesClick, onTemporaryClick }: HousingOptionsProps) {
+export default function HousingOptions({ property, onApplyClick }: HousingOptionsProps) {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6">
@@ -63,13 +61,12 @@ export default function HousingOptions({ property, onApplyClick, onHomesClick, o
                 </li>
               ))}
             </ul>
-            <button
-              onClick={onHomesClick}
+            <a
+              href="/availability"
               className="block w-full text-center py-3 rounded-lg font-semibold transition-colors bg-stone-900 hover:bg-stone-800 text-white"
-              type="button"
             >
               View Availability
-            </button>
+            </a>
           </div>
 
           {/* Community Life */}
@@ -86,13 +83,12 @@ export default function HousingOptions({ property, onApplyClick, onHomesClick, o
                 </li>
               ))}
             </ul>
-            <button
-              onClick={onTemporaryClick}
+            <a
+              href="#features"
               className="block w-full text-center py-3 rounded-lg font-semibold transition-colors bg-stone-900 hover:bg-stone-800 text-white"
-              type="button"
             >
               Learn More
-            </button>
+            </a>
           </div>
         </div>
       </div>
