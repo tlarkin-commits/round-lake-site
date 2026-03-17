@@ -28,10 +28,25 @@ export default function BillingPage() {
 
       <div className="max-w-4xl mx-auto px-6 py-12 space-y-8">
 
+        {/* Pay Online CTA */}
+        <div className=bg-[#1B4D3E] text-white rounded-2xl p-8 text-center>
+          <h2 className=text-2xl font-bold mb-2>💻 Pay Online</h2>
+          <p className=text-green-100 mb-6>Pay your water and sewer bill conveniently through your AppFolio online portal.</p>
+          <a
+            href=https://www.appfolio.com/help/online-portal
+            target=_blank
+            rel=noopener noreferrer
+            className=inline-block bg-white text-[#1B4D3E] font-bold px-8 py-4 rounded-full text-lg hover:bg-green-50 transition-colors shadow-md
+          >
+            Pay Your Bill Online →
+          </a>
+          <p className=mt-4 text-green-200 text-sm>First time? Set up your online portal account to get started.</p>
+        </div>
+
         {/* Pay Your Bill */}
-        <div className="bg-white rounded-2xl p-8 shadow-sm border border-stone-200">
-          <h2 className="text-2xl font-bold text-stone-900 mb-4">💳 Pay Your Bill</h2>
-          <div className="grid sm:grid-cols-2 gap-6">
+        <div className=bg-white rounded-2xl p-8 shadow-sm border border-stone-200>
+          <h2 className=text-2xl font-bold text-stone-900 mb-4>💳 Other Payment Options</h2>
+          <div className=grid sm:grid-cols-2 gap-6>
             <div>
               <h3 className="font-semibold text-stone-800 mb-2">By Phone</h3>
               <p className="text-stone-600 text-sm mb-2">Call our office during business hours to pay by credit card or check.</p>

@@ -37,26 +37,14 @@ export default function Contact({ property, onContactClick }: ContactProps) {
     try {
       const fullName = `${formData.firstName} ${formData.lastName}`;
 
-      const leadResponse = await fetch('https://ops.coastmhp.com/api/leasing/ai/leads', {
+      const leadResponse = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: fullName,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
           email: formData.email,
           phone: formData.phone || null,
-          propertyId: property.opsPropertyId,
-          source: "website-contact-form",
-          notes: `Contact form submission. Interest: ${formData.interest || 'General inquiry'}. Message: ${formData.message || 'No additional message'}`
-        })
-      });
-
-      await fetch('https://ops.coastmhp.com/api/contact/email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: fullName,
-          email: formData.email,
-          phone: formData.phone,
           interest: formData.interest,
           message: formData.message,
           propertyId: property.opsPropertyId,
