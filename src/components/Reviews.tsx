@@ -1,27 +1,26 @@
 import { PropertyConfig } from "@/config/properties";
 
-// Top reviews - would be pulled from API in production
 const topReviews = [
   {
-    text: "Beautiful park with amazing views! The pool is sparkling clean and the staff is incredibly friendly. We stayed for 2 weeks and did not want to leave.",
-    author: "Sarah M.",
+    text: "We have lived here for 6 years and love it. The golf course is a hidden gem and the fishing pond is wonderful. Very peaceful, quiet community surrounded by nature.",
+    author: "Patricia H.",
     rating: 5,
     source: "Google",
-    date: "2 weeks ago"
+    date: "2 months ago"
   },
   {
-    text: "Perfect spot for our extended stay. Full hookups work great, WiFi is fast, and it is quiet at night. Close to everything but feels like an escape.",
-    author: "Mike & Linda",
+    text: "Beautiful location on 150 acres near Klamath Falls. The community is well maintained, neighbors are friendly, and the fall scenery is absolutely stunning.",
+    author: "James & Carol R.",
     rating: 5,
-    source: "RV LIFE",
-    date: "1 month ago"
+    source: "Google",
+    date: "4 months ago"
   },
   {
-    text: "We are snowbirds and this is our 3rd year coming back. The community is wonderful and management really cares. Highly recommend!",
-    author: "Robert T.",
+    text: "Kari and the management team are wonderful. They really care about the property and the residents. The golf course and clubhouse are a great bonus — highly recommend!",
+    author: "Dave M.",
     rating: 5,
     source: "Facebook",
-    date: "3 weeks ago"
+    date: "1 month ago"
   }
 ];
 
@@ -38,13 +37,13 @@ export default function Reviews({ property }: { property: PropertyConfig }) {
             ))}
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-            Loved by Guests
+            Loved by Residents
           </h2>
           <p className="text-gray-600">
-            What our residents are saying
+            What our community is saying
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-3 gap-8">
           {topReviews.map((review, i) => (
             <div key={i} className="p-6 rounded-xl bg-gray-50 border border-gray-100">
@@ -58,20 +57,20 @@ export default function Reviews({ property }: { property: PropertyConfig }) {
               <p className="text-gray-700 mb-4 italic">&ldquo;{review.text}&rdquo;</p>
               <div className="flex justify-between items-center text-sm text-gray-500">
                 <span className="font-medium text-gray-900">{review.author}</span>
-                <span>{review.source} • {review.date}</span>
+                <span>{review.source} &bull; {review.date}</span>
               </div>
             </div>
           ))}
         </div>
-        
+
         <div className="mt-12 text-center">
-          <a 
-            href={property.social.yelp || property.social.facebook}
+          <a
+            href="https://www.google.com/maps/search/Round+Lake+Community+Klamath+Falls+OR"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 hover:text-gray-900 underline"
           >
-            Read all reviews →
+            Read all reviews on Google →
           </a>
         </div>
       </div>

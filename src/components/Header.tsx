@@ -25,8 +25,8 @@ export default function Header({ property, onApplyClick, onLocationClick }: Head
           <Image
             src="/images/round-lake/logo.jpg"
             alt="Round Lake Community"
-            width={160}
-            height={60}
+            width={170}
+            height={80}
             className="h-12 w-auto object-contain"
             priority
           />
@@ -37,6 +37,7 @@ export default function Header({ property, onApplyClick, onLocationClick }: Head
           <a href="#gallery" className="text-stone-600 hover:text-stone-900 transition-colors text-sm">Gallery</a>
           <a href="#features" className="text-stone-600 hover:text-stone-900 transition-colors text-sm">Amenities</a>
           <a href="#listings" className="text-stone-600 hover:text-stone-900 transition-colors text-sm">Available Units</a>
+          <a href="/utility" className="text-stone-600 hover:text-stone-900 transition-colors text-sm">Utility</a>
           <button
             onClick={() => {
               document.getElementById('location-section')?.scrollIntoView({ behavior: 'smooth' });

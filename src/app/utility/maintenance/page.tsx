@@ -101,7 +101,7 @@ export default function MaintenancePage() {
             <a href="tel:+15418842520" className="flex items-center justify-center gap-2 bg-[#1B4D3E] text-white font-semibold px-6 py-3 rounded-full hover:bg-[#133829] transition-colors">
               📞 Call (541) 884-2520
             </a>
-            <a href="mailto:office@roundlakecommunity.com?subject=Maintenance Request" className="flex items-center justify-center gap-2 border border-[#1B4D3E] text-[#1B4D3E] font-semibold px-6 py-3 rounded-full hover:bg-green-50 transition-colors">
+            <a href="mailto:maintenance@roundlakecommunity.com?subject=Maintenance Request" className="flex items-center justify-center gap-2 border border-[#1B4D3E] text-[#1B4D3E] font-semibold px-6 py-3 rounded-full hover:bg-green-50 transition-colors">
               ✉ Email a Request
             </a>
           </div>

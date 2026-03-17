@@ -209,7 +209,7 @@ export const properties: Record<string, PropertyConfig> = {
       stats: [
         { label: 'From Klamath Falls', value: '15 min' },
         { label: 'Acres of nature', value: '150' },
-        { label: 'Hole golf course', value: '18' },
+        { label: 'Hole Executive Golf', value: '9' },
       ],
     },
     paths: {
@@ -227,7 +227,7 @@ export const properties: Record<string, PropertyConfig> = {
       },
     },
     features: [
-      { icon: '⛳', title: '18-Hole Golf Course', description: 'Full 18-hole course with putting green, cart rentals, and clubhouse' },
+      { icon: '⛳', title: '9-Hole Executive Golf Course', description: 'Seasonal 9-hole executive course with putting green, cart rentals, and clubhouse' },
       { icon: '🎣', title: 'Fishing Pond', description: 'On-site fishing pond stocked and ready for residents' },
       { icon: '🥾', title: 'Hiking & Biking Trails', description: 'Miles of scenic trails through 150 acres of Oregon high plain' },
       { icon: '🏕️', title: 'RV Sites', description: 'Full hookup RV sites with 30/50 amp, water, and sewer' },
