@@ -4,20 +4,17 @@ import { useState } from "react";
 import Image from "next/image";
 import { PropertyConfig } from "@/config/properties";
 
-// Round Lake photos — update src paths once real photos are uploaded
 const images = [
-  { src: '/images/round-lake/golf-course-fairway.jpg', alt: 'Golf course fairway at Round Lake Community Klamath Falls Oregon' },
-  { src: '/images/round-lake/fishing-pond-sunset.jpg', alt: 'Fishing pond at sunset at Round Lake Community' },
-  { src: '/images/round-lake/hiking-trail-forest.jpg', alt: 'Hiking trail through forest at Round Lake Community Oregon' },
-  { src: '/images/round-lake/rv-sites-trees.jpg', alt: 'RV sites surrounded by trees at Round Lake Community Klamath Falls' },
-  { src: '/images/round-lake/clubhouse-exterior.jpg', alt: 'Clubhouse exterior at Round Lake Community golf course' },
-  { src: '/images/round-lake/home-lots-landscape.jpg', alt: 'Manufactured home lots with landscaping at Round Lake Community' },
-  { src: '/images/round-lake/community-grounds.jpg', alt: 'Community grounds at Round Lake Community Oregon' },
-  { src: '/images/round-lake/golf-putting-green.jpg', alt: 'Putting green at Round Lake Community golf course Klamath Falls' },
-  { src: '/images/round-lake/lake-view.jpg', alt: 'Scenic lake view at Round Lake Community Oregon' },
-  { src: '/images/round-lake/aerial-community.jpg', alt: 'Aerial view of Round Lake Community on 150 acres Klamath Falls OR' },
-  { src: '/images/round-lake/community-entrance.jpg', alt: 'Community entrance at Round Lake Community Klamath Falls Oregon' },
-  { src: '/images/round-lake/mountain-view-site.jpg', alt: 'Mountain views from Round Lake Community mobile home site' },
+  { src: '/images/round-lake/community-aerial.jpg', alt: 'Aerial view of Round Lake Community — pond, golf course, and 150 acres of Oregon countryside' },
+  { src: '/images/round-lake/golf-course-aerial.jpg', alt: 'Round Lake Golf Course clubhouse exterior with pull carts and American flag' },
+  { src: '/images/round-lake/golf-fairway.jpg', alt: 'Golf course fairway at Round Lake Community Klamath Falls Oregon' },
+  { src: '/images/round-lake/golf-green.jpg', alt: 'Putting green and clubhouse at Round Lake Community golf course' },
+  { src: '/images/round-lake/golf-course-1.jpg', alt: 'Round Lake Community golf course and grounds' },
+  { src: '/images/round-lake/golf-course-2.jpg', alt: 'Community office and golf facilities at Round Lake Community' },
+  { src: '/images/round-lake/golf-course-3.jpg', alt: 'Outdoor deck and patio with stone chimney at Round Lake Community clubhouse' },
+  { src: '/images/round-lake/community-grounds.jpg', alt: 'Community street with manufactured homes and trees at Round Lake Community' },
+  { src: '/images/round-lake/community-view.jpg', alt: 'Scenic view of Round Lake Community in Klamath Falls Oregon' },
+  { src: '/images/round-lake/hero.jpg', alt: 'Aerial drone view of Round Lake Community on 150 acres near Klamath Falls Oregon' },
 ];
 
 export default function Gallery({ property }: { property: PropertyConfig }) {
