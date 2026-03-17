@@ -5,7 +5,6 @@ import { properties } from "@/config/properties";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
-import Listings from "@/components/Listings";
 import Gallery from "@/components/Gallery";
 import HousingOptions from "@/components/HousingOptions";
 import Reviews from "@/components/Reviews";
@@ -121,7 +120,6 @@ export default function Home() {
         <section id="features">
           <Features property={property} />
         </section>
-        <Listings property={property} />
         <section id="gallery">
           <Gallery property={property} />
         </section>
