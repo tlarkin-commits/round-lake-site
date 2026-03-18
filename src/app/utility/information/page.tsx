@@ -6,7 +6,43 @@ export const metadata: Metadata = {
   description: "Round Lake Water and Sewer District service area, water quality information, new service connections, and district details.",
 };
 
-export default function InformationPage() {
+interface UtilityStatus {
+  waterStatus: string;
+  sewerStatus: string;
+  lastUpdated: string;
+  maintenanceNotices: { id: string; message: string; date: string; severity: string }[];
+}
+
+async function getUtilityStatus(): Promise<UtilityStatus | null> {
+  try {
+    const res = await fetch("https://roundlake.coastmhp.com/api/utility/roundlake", {
+      next: { revalidate: 60 },
+    });
+    if (!res.ok) return null;
+    return res.json();
+  } catch {
+    return null;
+  }
+}
+
+const SEVERITY_STYLES: Record<string, string> = {
+  info: "bg-blue-50 border-blue-200 text-blue-800",
+  warning: "bg-yellow-50 border-yellow-300 text-yellow-900",
+  critical: "bg-red-50 border-red-300 text-red-900",
+};
+
+const SEVERITY_ICONS: Record<string, string> = {
+  info: "ℹ️",
+  warning: "⚠️",
+  critical: "🚨",
+};
+
+export default async function InformationPage() {
+  const status = await getUtilityStatus();
+
+  const isNormal = (s: string) =>
+    s.toLowerCase().includes("normal") || s.toLowerCase().includes("operating");
+
   return (
     <div className="min-h-screen bg-stone-50">
       <header className="bg-[#1B4D3E] text-white py-4 px-6">
@@ -27,6 +63,60 @@ export default function InformationPage() {
       </section>
 
       <div className="max-w-4xl mx-auto px-6 py-12 space-y-8">
+
+        {/* Live System Status */}
+        {status && (
+          <div className="bg-white rounded-2xl p-8 shadow-sm border border-stone-200">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-bold text-stone-900">🔴 System Status</h2>
+              <span className="text-xs text-stone-400">Updated {status.lastUpdated}</span>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                { icon: "💧", label: "Water", value: status.waterStatus },
+                { icon: "🚽", label: "Sewer", value: status.sewerStatus },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className={`flex items-center gap-3 p-4 rounded-xl border ${
+                    isNormal(item.value)
+                      ? "bg-green-50 border-green-200"
+                      : "bg-yellow-50 border-yellow-300"
+                  }`}
+                >
+                  <span className="text-2xl">{item.icon}</span>
+                  <div>
+                    <div className="text-xs text-stone-500 uppercase tracking-wide">{item.label}</div>
+                    <div className={`font-semibold text-sm ${isNormal(item.value) ? "text-green-800" : "text-yellow-900"}`}>
+                      {item.value}
+                    </div>
+                  </div>
+                  <div className="ml-auto">
+                    <span className={`inline-block w-2 h-2 rounded-full ${isNormal(item.value) ? "bg-green-500" : "bg-yellow-500"}`} />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Active maintenance notices */}
+            {status.maintenanceNotices?.length > 0 && (
+              <div className="mt-4 space-y-3">
+                {status.maintenanceNotices.map((n) => (
+                  <div
+                    key={n.id}
+                    className={`flex gap-3 p-4 rounded-xl border ${SEVERITY_STYLES[n.severity] || SEVERITY_STYLES.info}`}
+                  >
+                    <span className="text-lg flex-shrink-0">{SEVERITY_ICONS[n.severity] || "ℹ️"}</span>
+                    <div>
+                      <div className="text-sm font-medium">{n.message}</div>
+                      <div className="text-xs opacity-70 mt-0.5">{n.date}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* District Info */}
         <div className="bg-white rounded-2xl p-8 shadow-sm border border-stone-200">

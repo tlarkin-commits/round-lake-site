@@ -6,7 +6,29 @@ export const metadata: Metadata = {
   description: "Round Lake Water and Sewer District annual Consumer Confidence Report and water quality compliance information.",
 };
 
-export default function AnnualReportPage() {
+interface Report {
+  id: string;
+  year: string;
+  label: string;
+  filename: string;
+  uploadedAt: string;
+}
+
+async function getReports(): Promise<Report[]> {
+  try {
+    const res = await fetch("https://roundlake.coastmhp.com/api/utility/roundlake", {
+      next: { revalidate: 60 },
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.annualReports || [];
+  } catch {
+    return [];
+  }
+}
+
+export default async function AnnualReportPage() {
+  const reports = await getReports();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -41,38 +63,71 @@ export default function AnnualReportPage() {
           </p>
         </div>
 
-        {/* Current Report */}
+        {/* Reports — live from API */}
         <div className="bg-white rounded-2xl p-8 shadow-sm border border-stone-200">
           <h2 className="text-2xl font-bold text-stone-900 mb-4">📄 Current & Past Reports</h2>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-green-50 rounded-xl border border-green-200">
-              <div>
-                <div className="font-semibold text-stone-800">{currentYear - 1} Consumer Confidence Report</div>
-                <div className="text-sm text-stone-500">Reporting year {currentYear - 1} — distributed {currentYear}</div>
-              </div>
-              <a
-                href="mailto:office@roundlakecommunity.com?subject=Annual Report Request"
-                className="bg-[#1B4D3E] text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-[#133829] transition-colors"
-              >
-                Request Copy
-              </a>
+
+          {reports.length > 0 ? (
+            <div className="space-y-3">
+              {reports.map((r, i) => (
+                <div
+                  key={r.id}
+                  className={`flex items-center justify-between p-4 rounded-xl border ${
+                    i === 0 ? "bg-green-50 border-green-200" : "bg-stone-50 border-stone-200"
+                  }`}
+                >
+                  <div>
+                    <div className="font-semibold text-stone-800">{r.label}</div>
+                    <div className="text-sm text-stone-500">Reporting year {r.year} · Uploaded {new Date(r.uploadedAt).toLocaleDateString()}</div>
+                  </div>
+                  <a
+                    href={`https://roundlake.coastmhp.com/uploads/utility/${r.filename}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-sm font-semibold px-4 py-2 rounded-lg transition-colors ${
+                      i === 0
+                        ? "bg-[#1B4D3E] text-white hover:bg-[#133829]"
+                        : "border border-stone-300 text-stone-700 hover:bg-stone-100"
+                    }`}
+                  >
+                    ↓ Download PDF
+                  </a>
+                </div>
+              ))}
             </div>
-            <div className="flex items-center justify-between p-4 bg-stone-50 rounded-xl border border-stone-200">
-              <div>
-                <div className="font-semibold text-stone-800">{currentYear - 2} Consumer Confidence Report</div>
-                <div className="text-sm text-stone-500">Reporting year {currentYear - 2}</div>
+          ) : (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between p-4 bg-green-50 rounded-xl border border-green-200">
+                <div>
+                  <div className="font-semibold text-stone-800">{currentYear - 1} Consumer Confidence Report</div>
+                  <div className="text-sm text-stone-500">Reporting year {currentYear - 1} — distributed {currentYear}</div>
+                </div>
+                <a
+                  href="mailto:office@roundlakecommunity.com?subject=Annual Report Request"
+                  className="bg-[#1B4D3E] text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-[#133829] transition-colors"
+                >
+                  Request Copy
+                </a>
               </div>
-              <a
-                href="mailto:office@roundlakecommunity.com?subject=Annual Report Request"
-                className="border border-stone-300 text-stone-700 text-sm font-semibold px-4 py-2 rounded-lg hover:bg-stone-100 transition-colors"
-              >
-                Request Copy
-              </a>
+              <div className="flex items-center justify-between p-4 bg-stone-50 rounded-xl border border-stone-200">
+                <div>
+                  <div className="font-semibold text-stone-800">{currentYear - 2} Consumer Confidence Report</div>
+                  <div className="text-sm text-stone-500">Reporting year {currentYear - 2}</div>
+                </div>
+                <a
+                  href="mailto:office@roundlakecommunity.com?subject=Annual Report Request"
+                  className="border border-stone-300 text-stone-700 text-sm font-semibold px-4 py-2 rounded-lg hover:bg-stone-100 transition-colors"
+                >
+                  Request Copy
+                </a>
+              </div>
+              <p className="mt-4 text-sm text-stone-500">
+                To receive a printed or digital copy of any annual report, contact our office at{" "}
+                <a href="tel:+15418842520" className="text-[#1B4D3E] hover:underline">(541) 884-2520</a> or{" "}
+                <a href="mailto:office@roundlakecommunity.com" className="text-[#1B4D3E] hover:underline">email us</a>.
+              </p>
             </div>
-          </div>
-          <p className="mt-4 text-sm text-stone-500">
-            To receive a printed or digital copy of any annual report, contact our office at <a href="tel:+15418842520" className="text-[#1B4D3E] hover:underline">(541) 884-2520</a> or <a href="mailto:office@roundlakecommunity.com" className="text-[#1B4D3E] hover:underline">email us</a>.
-          </p>
+          )}
         </div>
 
         {/* Water Source */}
@@ -93,20 +148,6 @@ export default function AnnualReportPage() {
                 <div className="font-semibold text-stone-800 mt-1 text-sm">{item.value}</div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Regulatory Info */}
-        <div className="bg-white rounded-2xl p-8 shadow-sm border border-stone-200">
-          <h2 className="text-2xl font-bold text-stone-900 mb-4">🏛️ Regulatory Information</h2>
-          <div className="space-y-3 text-sm text-stone-600">
-            <p>Round Lake Water and Sewer District is regulated by the <strong>Oregon Health Authority Drinking Water Services</strong> and complies with all applicable federal and state drinking water standards.</p>
-            <p>For more information about drinking water quality, contact:</p>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li><a href="https://www.oregon.gov/oha/PH/HEALTHYENVIRONMENTS/DRINKINGWATER" target="_blank" rel="noopener noreferrer" className="text-[#1B4D3E] hover:underline">Oregon Health Authority — Drinking Water Services</a></li>
-              <li><a href="https://www.epa.gov/ccr" target="_blank" rel="noopener noreferrer" className="text-[#1B4D3E] hover:underline">EPA Consumer Confidence Report Resources</a></li>
-              <li><a href="https://www.epa.gov/ground-water-and-drinking-water/safe-drinking-water-hotline" target="_blank" rel="noopener noreferrer" className="text-[#1B4D3E] hover:underline">EPA Safe Drinking Water Hotline: 1-800-426-4791</a></li>
-            </ul>
           </div>
         </div>
 
