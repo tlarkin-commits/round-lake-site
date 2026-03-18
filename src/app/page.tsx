@@ -56,7 +56,7 @@ const faqSchema = {
       "name": "How much is lot rent at Round Lake Community?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Lot rent varies depending on the site and lease term. Please contact us at (541) 884-2520 or use our online contact form for current pricing."
+        "text": "Manufactured home lot rent starts at $475/month. RV site rates vary — please contact us at (541) 884-2520 for current availability and pricing."
       }
     },
     {
