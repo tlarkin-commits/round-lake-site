@@ -61,7 +61,7 @@ export const properties: Record<string, PropertyConfig> = {
     zip: "92061",
     phone: "(760) 742-3755",
     email: "manager@ranchocorridopark.com",
-    opsPropertyId: "3",
+    opsPropertyId: "rancho-corrido",
     colors: {
       primary: "#2D5016", // Forest green - country/nature feel
       primaryDark: "#1E3A0F",
@@ -195,7 +195,7 @@ export const properties: Record<string, PropertyConfig> = {
     zip: '97601',
     phone: '(541) 884-2520',
     email: 'office@roundlakecommunity.com',
-    opsPropertyId: '2',
+    opsPropertyId: 'roundlake',
     colors: {
       primary: '#1B4D3E',
       primaryDark: '#133829',
