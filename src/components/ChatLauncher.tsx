@@ -36,7 +36,12 @@ export default function ChatLauncher({ onOpen, isOpen }: ChatLauncherProps) {
           <span className="absolute inset-0 rounded-full bg-amber-400 animate-ping opacity-75" />
         )}
         <button
-          onClick={onOpen}
+          onClick={() => {
+            if (typeof window !== "undefined" && (window as any).gtag) {
+              (window as any).gtag('event', 'conversion', { send_to: 'AW-18027956969/eN7OCPqP-6scEOmVs5RD', value: 1.0, currency: 'USD' });
+            }
+            onOpen();
+          }}
           aria-label="Chat with Sarah, our leasing assistant"
           className="relative bg-amber-500 hover:bg-amber-400 text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
         >
