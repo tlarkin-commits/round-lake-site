@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const metadata = {
   title: "Available Units | Round Lake Community",
   description: "Browse available manufactured home lots and RV sites at Round Lake Community in Klamath Falls, OR.",
@@ -12,12 +14,12 @@ export default function AvailabilityPage() {
           <h1 className="text-lg font-semibold">Available Units</h1>
           <p className="text-stone-400 text-sm">Round Lake Community · Klamath Falls, OR</p>
         </div>
-        <a
+        <Link
           href="/"
           className="text-stone-300 hover:text-white text-sm transition-colors"
         >
           ← Back to Site
-        </a>
+        </Link>
       </div>
 
       {/* AppFolio Listings Embed — full viewport height */}
